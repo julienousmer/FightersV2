@@ -1,29 +1,61 @@
-<div class="container-fluid">
-  <div *ngIf="fightersList">
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th scope="col">Firstname</th>
-        <th scope="col">Lastname</th>
-        <th scope="col">Weight</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let fighter of fightersList" (click)="setCurrentFighter(fighter)">
-        <td>{{fighter.firstName}}</td>
-        <td>{{fighter.name}}</td>
-        <td>{{fighter.weight}}</td>
-      </tr>
-      </tbody>
-      <tfoot>
-      <input type="button" class="btn btn-edit">
-    </tfoot>
-  </table>
-  <app-fighter-details *ngIf="currentFighter" [model]="currentFighter" ></app-fighter-details>
+<form [formGroup]="fighterForm">
+  <div class="row">
+    <div class="col-6">
+      <label for="firstname">
+        Nom
+      </label>
+      <input class="form-control" id="firstname" type="text" formControlName="firstname">
+    </div>
+    <div class="col-6">
+      <label for="lastname">
+        Prénom
+      </label>
+      <input class="form-control" id="lastname" type="text" formControlName="lastname">
+    </div>
+    <div class="col-6">
+      <label for="age">
+        Age
+      </label>
+      <input class="form-control" id="age" type="text" formControlName="age">
+    </div>
+    <div class="col-6">
+      <label for="weight">
+        Weight
+      </label>
+      <input class="form-control" id="weight" type="text" formControlName="weight">
+    </div>
+    <div class="col-6">
+      <label for="height">
+        Height
+      </label>
+      <input class="form-control" id="height" type="text" formControlName="height">
+    </div>
+    <div class="col-6">
+      <label for="reach">
+        Reach
+      </label>
+      <input class="form-control" id="reach" type="text" formControlName="reach">
+    </div>
+    <div class="col-6">
+      <label for="nbWin">
+        number Wins
+      </label>
+      <input class="form-control" id="nbWin" type="text" formControlName="nbWin">
+    </div>
+    <div class="col-6">
+      <label for="nbLose">
+        number Looses
+      </label>
+      <input class="form-control" id="nbLose" type="text" formControlName="nbLose">
+    </div>
+    <div class="col-6">
+      <label for="sexe">
+        Sexe
+      </label>
+      <input class="form-control" id="sexe" type="text" formControlName="sexe">
+    </div>
   </div>
-  <div *ngIf="!fightersList">
-    <p>Chargement ...</p>
-  </div>
-</div>
 
 
+  <input type="submit" class="btn btn-primary mt-3" value="Valider">
+</form>

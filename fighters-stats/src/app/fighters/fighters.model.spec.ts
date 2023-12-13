@@ -1,4 +1,4 @@
-import { Fighter } from './fighter.model';
+import { Fighter } from './fighters.model';
 
 describe('Fighter', () => {
   it('should create an instance', () => {

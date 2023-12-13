@@ -1,0 +1,14 @@
+.table{
+  --bs-table-bg: var(--color-grey-table-bg);
+
+  .table-title-id{
+    width: 5%
+  }
+
+  th, td{
+    text-align: center;
+    color: var(--color-grey-table-value);
+  }
+}
+
+
