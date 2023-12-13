@@ -1,16 +1,16 @@
 <form [formGroup]="fighterForm">
   <div class="row">
     <div class="col-6">
-      <label for="firstName">
+      <label for="firstname">
         Nom
       </label>
-      <input class="form-control" id="firstName" type="text" formControlName="firstName">
+      <input class="form-control" id="firstname" type="text" formControlName="firstname">
     </div>
     <div class="col-6">
-      <label for="name">
+      <label for="lastname">
         Prénom
       </label>
-      <input class="form-control" id="name" type="text" formControlName="name">
+      <input class="form-control" id="lastname" type="text" formControlName="lastname">
     </div>
     <div class="col-6">
       <label for="age">
@@ -61,7 +61,5 @@
       <input class="form-control" id="category" type="text" formControlName="category">
     </div>
   </div>
-
-
-  <input type="submit" class="btn btn-primary mt-3" value="Valider">
+  <input type="submit" class="btn btn-success mt-3" value="Valider">
 </form>
