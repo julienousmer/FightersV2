@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid my-5">
   <div *ngIf="fightersList">
     <table class="table table-striped">
       <thead>
@@ -6,13 +6,20 @@
         <th scope="col">Firstname</th>
         <th scope="col">Lastname</th>
         <th scope="col">Weight</th>
+        <th scope="col">Actions</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let fighter of fightersList" (click)="setCurrentFighter(fighter)">
+      <tr *ngFor="let fighter of fightersList">
         <td>{{fighter.firstname}}</td>
         <td>{{fighter.lastname}}</td>
         <td>{{fighter.weight}}</td>
+        <td>
+          <a class="btn btn-warning me-2" (click)="setCurrentFighter(fighter)">
+            Edit
+        </a>
+          <a class="btn btn-secondary" [routerLink]="['/fighter', fighter.id ]" routerLinkActive="activeLinkClass">Voir</a>
+        </td>
       </tr>
       </tbody>
       <tfoot>
