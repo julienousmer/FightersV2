@@ -12,6 +12,7 @@ export class DetailFighterComponent implements OnInit{
 
   @Input()
   fighter!: Fighter | undefined;
+  isEdit: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,12 +21,16 @@ export class DetailFighterComponent implements OnInit{
   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      if (params['isEdit']){
+        this.isEdit = params['isEdit'];
+      }
+    })
     this.route.paramMap.subscribe(params => {
       if (params.has('id')){
         let idFighter = params.get('id');
         if (idFighter != null){
           this.fightersService.getById(parseInt(idFighter)).subscribe(resFighter => {
-            console.log(resFighter);
             this.fighter = resFighter;
           })
         }

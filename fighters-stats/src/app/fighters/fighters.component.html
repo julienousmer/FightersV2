@@ -15,7 +15,7 @@
         <td>{{fighter.lastname}}</td>
         <td>{{fighter.weight}}</td>
         <td>
-          <a class="btn btn-warning me-2" (click)="setCurrentFighter(fighter)">
+          <a class="btn btn-warning me-2" (click)="setCurrentFighter(fighter)"  [routerLink]="['/fighter/edit/', fighter.id]" [queryParams]="{isEdit: true}" routerLinkActive="activeLinkClass">
             Edit
         </a>
           <a class="btn btn-secondary" [routerLink]="['/fighter/detail/', fighter.id ]" routerLinkActive="activeLinkClass">Voir</a>

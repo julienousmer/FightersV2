@@ -7,7 +7,7 @@ const routes: Routes = [
   {path: 'fighter/detail/:id', component: DetailFighterComponent},
   {path: 'fighter/list', component: FightersComponent},
   {path: '', redirectTo: '/fighter/list', pathMatch: 'full'},
-
+  {path: 'fighter/edit/:id', component: DetailFighterComponent}
 ];
 
 @NgModule({
