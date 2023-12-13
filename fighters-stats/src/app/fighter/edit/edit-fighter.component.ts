@@ -25,7 +25,8 @@ export class EditFighterComponent {
     reach: [0],
     nbWin: [0],
     nbLose: [0],
-    sexe: ['']
+    sexe: [''],
+    category: [null]
   })
 
   ngOnInit() {
@@ -42,6 +43,7 @@ export class EditFighterComponent {
         nbWin: 21,
         nbLose: 21,
         sexe: 'M',
+        category: null,
       }
     } else {
       // @ts-ignore
