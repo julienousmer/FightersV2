@@ -1,1 +1,1 @@
-# FightersV2
+# FighterStats
