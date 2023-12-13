@@ -6,14 +6,16 @@ import { AppComponent } from './app.component';
 import { FightersComponent } from './fighters/fighters.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { CategoryComponent } from './category/category.component';
-import {FighterComponent} from "./fighter/fighter.component";
+import {EditFighterComponent} from "./fighter/edit/edit-fighter.component";
+import { DetailFighterComponent } from './fighter/detail-fighter/detail-fighter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FightersComponent,
-    FighterComponent,
-    CategoryComponent
+    EditFighterComponent,
+    CategoryComponent,
+    DetailFighterComponent
   ],
   imports: [
     BrowserModule,

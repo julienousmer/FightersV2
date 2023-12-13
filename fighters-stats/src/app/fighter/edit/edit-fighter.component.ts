@@ -1,18 +1,20 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
-import { Fighter } from '../models/fighter';
+import { Fighter } from '../../models/fighter';
 
 @Component({
-  selector: 'app-fighter',
-  templateUrl: './fighter.component.html',
-  styleUrls: ['./fighter.component.scss']
+  selector: 'app-edit-fighter',
+  templateUrl: './edit-fighter.component.html',
+  styleUrls: ['./edit-fighter.component.scss']
 })
-export class FighterComponent {
+export class EditFighterComponent {
 
   @Input()
   model: Fighter | undefined | null;
   @Output()
   emitFighter: EventEmitter<Fighter> = new EventEmitter<Fighter>();
+  @Input()
+  isEdit: boolean = false;
 
   fighterForm = this.fb.group({
     firstname: [''],

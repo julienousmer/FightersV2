@@ -90,4 +90,10 @@ export class FightersService {
     return of(this.fighters)
   }
 
+  getById(id: number): Observable<Fighter|undefined>{
+    console.log(of(this.fighters.find(f => f.id === id)))
+    console.log(id);
+    return of(this.fighters.find(f => f.id === id))
+  }
+
 }

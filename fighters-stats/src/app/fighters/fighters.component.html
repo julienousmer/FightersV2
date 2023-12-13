@@ -18,7 +18,7 @@
           <a class="btn btn-warning me-2" (click)="setCurrentFighter(fighter)">
             Edit
         </a>
-          <a class="btn btn-secondary" [routerLink]="['/fighter', fighter.id ]" routerLinkActive="activeLinkClass">Voir</a>
+          <a class="btn btn-secondary" [routerLink]="['/fighter/detail/', fighter.id ]" routerLinkActive="activeLinkClass">Voir</a>
         </td>
       </tr>
       </tbody>
@@ -27,7 +27,7 @@
     </tfoot>
   </table>
   <div *ngIf="currentFighter">
-    <app-fighter [model]="currentFighter" ></app-fighter>
+    <app-edit-fighter [model]="currentFighter" ></app-edit-fighter>
   </div>
   </div>
   <div *ngIf="!fightersList">
