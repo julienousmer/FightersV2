@@ -1,0 +1,36 @@
+<div class="card">
+  <form [formGroup]="adminForm">
+    <div class="card-header">
+      <h2>Admin login</h2>
+    </div>
+    <div class="card-content">
+      <p *ngIf="errorMessage">{{errorMessage}}</p>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+          <label for="pseudo">
+            Pseudo
+          </label>
+          <input class="form-control" id="pseudo" type="text" formControlName="pseudo">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+          <label for="pseudo">
+            Password
+          </label>
+          <input class="form-control" id="password" type="password" formControlName="password">
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2">
+          <a type="submit" class="btn btn-success" (click)="checkIsAdmin()">Login</a>
+        </div>
+        <div class="col-md-5"></div>
+      </div>
+    </div>
+  </form>
+</div>
