@@ -26,9 +26,6 @@
       <input type="button" class="btn btn-edit">
     </tfoot>
   </table>
-  <div *ngIf="currentFighter">
-    <app-edit-fighter [model]="currentFighter" ></app-edit-fighter>
-  </div>
   </div>
   <div *ngIf="!fightersList">
     <p>Chargement ...</p>
