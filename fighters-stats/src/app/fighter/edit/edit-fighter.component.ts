@@ -11,10 +11,10 @@ export class EditFighterComponent {
 
   @Input()
   model: Fighter | undefined | null;
+  @Input()
+  isEdit!: boolean;
   @Output()
   emitFighter: EventEmitter<Fighter> = new EventEmitter<Fighter>();
-  @Input()
-  isEdit: boolean = false;
 
   fighterForm = this.fb.group({
     firstname: [''],
@@ -30,7 +30,7 @@ export class EditFighterComponent {
   })
 
   ngOnInit() {
-
+    this.isEdit = this.isReadOnly
     if (this.model === null) {
       this.model = {
         id: 1,
@@ -52,5 +52,9 @@ export class EditFighterComponent {
   }
 
   constructor(private fb: FormBuilder) {
+  }
+
+  get isReadOnly(): boolean {
+    return this.isEdit;
   }
 }
