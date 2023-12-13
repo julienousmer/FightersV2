@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FightersService} from "./fighters.service";
-import {Fighter} from "../models/fighter";
+import {Fighter} from "../../models/fighter";
 
 @Component({
   selector: 'app-fighters',
