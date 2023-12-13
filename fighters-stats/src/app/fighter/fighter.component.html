@@ -3,7 +3,6 @@
     <table class="table table-striped">
       <thead>
       <tr>
-        <th scope="col" class="table-title-id">ID</th>
         <th scope="col">Firstname</th>
         <th scope="col">Lastname</th>
         <th scope="col">Weight</th>
@@ -11,7 +10,6 @@
       </thead>
       <tbody>
       <tr *ngFor="let fighter of fightersList" (click)="setCurrentFighter(fighter)">
-        <th scope="row">{{fighter.id}}</th>
         <td>{{fighter.firstName}}</td>
         <td>{{fighter.name}}</td>
         <td>{{fighter.weight}}</td>
