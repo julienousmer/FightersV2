@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from "rxjs";
 import {Fighter} from "../models/fighter";
+import {CategoryService} from "../category/category.service";
 
 
 
@@ -21,6 +22,7 @@ export class FightersService {
       nbWin: 0,
       nbLose: 2,
       sexe: 'M',
+      category: this.categoryService.getCategoryById(6),
     },
     {
       id: 2,
@@ -33,6 +35,8 @@ export class FightersService {
       nbWin: 2,
       nbLose: 0,
       sexe: 'M',
+      category: this.categoryService.getCategoryById(6),
+
     },
     {
       id: 3,
@@ -45,6 +49,8 @@ export class FightersService {
       nbWin: 10,
       nbLose: 3,
       sexe: 'M',
+      category: this.categoryService.getCategoryById(6),
+
     },
     {
       id: 4,
@@ -57,6 +63,7 @@ export class FightersService {
       nbWin: 14,
       nbLose: 1,
       sexe: 'M',
+      category: this.categoryService.getCategoryById(6),
     },
     {
       id: 5,
@@ -69,6 +76,8 @@ export class FightersService {
       nbWin: 21,
       nbLose: 1,
       sexe: 'M',
+      category: this.categoryService.getCategoryById(6),
+
     },
     {
       id: 6,
@@ -81,9 +90,11 @@ export class FightersService {
       nbWin: 6,
       nbLose: 1,
       sexe: 'M',
+      category: this.categoryService.getCategoryById(6),
+
     }
   ]
-  constructor() {
+  constructor(private categoryService: CategoryService) {
   }
 
   getAllFighters(): Observable<Array<Fighter>>{

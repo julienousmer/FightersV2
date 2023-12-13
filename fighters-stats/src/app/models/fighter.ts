@@ -1,3 +1,5 @@
+import {Category} from "../category/category.model";
+
 export interface Fighter {
   id: number;
   firstname: string;
@@ -9,4 +11,5 @@ export interface Fighter {
   nbWin: number;
   nbLose: number;
   sexe: string;
+  category: Category | null;
 }
