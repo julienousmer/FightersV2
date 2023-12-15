@@ -11,7 +11,6 @@ import {WeightCategory, WeightCategoryUtil} from "../../enums/weightCategory";
 export class FightersComponent implements OnInit {
 
   fightersList: Array<Fighter> | undefined;
-  currentFighter!: Fighter | null;
 
   ngOnInit() {
     console.log(WeightCategoryUtil.parse(WeightCategoryUtil.toString(WeightCategory.Featherweight)));
@@ -21,14 +20,6 @@ export class FightersComponent implements OnInit {
   }
 
   constructor(private fighterService: FightersService) {
-  }
-
-
-  setCurrentFighter(fighter: Fighter) {
-    this.currentFighter = null;
-    setTimeout(() => {
-      this.currentFighter = fighter;
-    }, 10)
   }
 
 }

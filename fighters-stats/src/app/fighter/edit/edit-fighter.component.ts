@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import { Fighter } from '../../models/fighter';
+import {AdminService} from "../../admin/admin.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-edit-fighter',
@@ -51,10 +53,27 @@ export class EditFighterComponent {
     }
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private adminService: AdminService
+  ) {
   }
 
   get isReadOnly(): boolean {
     return this.isEdit;
+  }
+
+  public toggleEdit(): Promise<boolean> | boolean{
+    if (this.adminService.get_auth()){
+      this.isEdit = true;
+      return true;
+    }else {
+      return this.router.navigate(["/admin/login"], {
+        queryParams: {
+          redirectTo: this.model?.id
+        }
+      })
+    }
   }
 }

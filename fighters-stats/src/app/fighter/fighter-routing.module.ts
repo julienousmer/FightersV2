@@ -8,7 +8,6 @@ const routes: Routes = [
   {
     path: 'fighter',
     children: [
-      {path: 'edit/:id', component: DetailFighterComponent, pathMatch: 'full', canActivate:[AuthGuard]},
       {path: 'detail/:id', component: DetailFighterComponent, pathMatch: 'full'},
       {path: 'list', component: FightersComponent, pathMatch: 'full'},
       {redirectTo: 'list', path: '', pathMatch: 'full'}

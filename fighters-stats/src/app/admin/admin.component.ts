@@ -15,6 +15,7 @@ export class AdminComponent {
     password: ['']
   });
   errorMessage: string | undefined;
+  urlRedirectTo: string = "";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,9 +29,17 @@ export class AdminComponent {
       this.adminForm.get('pseudo')?.value,
       this.adminForm.get('password')?.value
     )){
-      return this.router.navigate(["/fighter/list"])
+      this.router.routerState.root.queryParams.subscribe((params) => {
+        if (params['redirectTo']){
+          this.urlRedirectTo = "/fighter/detail/" + params['redirectTo']
+        }else {
+          this.urlRedirectTo = "fighter/list"
+        }
+      })
+      return this.router.navigate([this.urlRedirectTo])
+    }else {
+      this.errorMessage = "Wrong login";
     }
-    this.errorMessage = "Wrong login";
     return false;
   }
 
