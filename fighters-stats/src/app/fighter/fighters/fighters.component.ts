@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FightersService} from "./fighters.service";
 import {Fighter} from "../../models/fighter";
+import {WeightCategory, WeightCategoryUtil} from "../../enums/weightCategory";
 
 @Component({
   selector: 'app-fighters',
@@ -13,6 +14,7 @@ export class FightersComponent implements OnInit {
   currentFighter!: Fighter | null;
 
   ngOnInit() {
+    console.log(WeightCategoryUtil.parse(WeightCategoryUtil.toString(WeightCategory.Featherweight)));
     this.fighterService.getAllFighters().subscribe(resFighters => {
       this.fightersList = resFighters
     })
