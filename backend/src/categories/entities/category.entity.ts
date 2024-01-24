@@ -1,17 +1,17 @@
 import {IFighter, ICategory} from '@models/shared'
 import {Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn} from "typeorm";
-import {JoinColumn} from "typeorm/browser";
+import {JoinColumn} from "typeorm";
 import {Fighter} from "../../fighters/entities/fighter.entity";
 
 @Entity()
 export class Category implements ICategory {
-    
-    @OneToOne(() => Fighter)
-    @JoinColumn({name: 'champion', referencedColumnName: 'id'})
-    champion: Fighter;
 
     @PrimaryGeneratedColumn()
     id: number;
+
+    @OneToOne(() => Fighter)
+    @JoinColumn({name: 'champion', referencedColumnName: 'id'})
+    champion: Fighter;
 
     @Column({name: 'max_weight', nullable: false})
     max_weight: number;
@@ -22,7 +22,7 @@ export class Category implements ICategory {
     @Column({name : 'name', nullable: false})
     name: string;
 
-    @OneToMany(() => Fighter, fighters=> fighter => fighter.category)
+    @OneToMany(() => Fighter, fighter=> fighter.category)
     @JoinColumn({name: 'champion', referencedColumnName: 'id'})
     fighters: Fighter[] | null;
 }

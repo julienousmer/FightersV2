@@ -13,5 +13,10 @@
       "paths": {
          "@models/shared": ["../shared"]
       }
+   },
+   "ts-node": {
+      "compilerOptions": {
+         "module": "CommonJS"
+      }
    }
 }
