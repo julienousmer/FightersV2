@@ -1,21 +1,21 @@
-import {AdminComponent} from "./admin.component";
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {ReactiveFormsModule} from "@angular/forms";
-import {AdminRoutingModule} from "./admin-routing.module";
+import {HttpClientModule} from "@angular/common/http";
+import {LoginComponent} from "./login/login.component";
 
 
 @NgModule({
   declarations: [
-    AdminComponent
+    LoginComponent
   ],
   imports: [
+    HttpClientModule,
     CommonModule,
     ReactiveFormsModule,
-    AdminRoutingModule
   ],
   exports: [
-    AdminComponent
+    LoginComponent
   ]
 })
-export class AdminModule { }
+export class AuthModule { }

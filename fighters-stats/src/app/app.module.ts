@@ -13,6 +13,10 @@ import { AdminComponent } from './admin/admin.component';
 import {AdminRoutingModule} from "./admin/admin-routing.module";
 import {AdminModule} from "./admin/admin.module";
 import {FighterModule} from "./fighter/fighter.module";
+import {AuthModule} from "./auth/auth.module";
+import {AuthInterceptor} from "../auth.interceptor";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {AuthRoutingModule} from "./auth/auth-routing.module";
 
 @NgModule({
   declarations: [
@@ -21,11 +25,17 @@ import {FighterModule} from "./fighter/fighter.module";
   imports: [
     BrowserModule,
     AdminModule,
+    AuthModule,
     FighterModule,
+    AuthRoutingModule,
     AppRoutingModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
