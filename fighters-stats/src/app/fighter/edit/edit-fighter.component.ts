@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import { Fighter } from "@models/shared";
-import {AdminService} from "../../admin/admin.service";
+import {UserService} from "../../admin/admin.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -56,7 +56,7 @@ export class EditFighterComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private adminService: AdminService
+    private adminService: UserService
   ) {
   }
 

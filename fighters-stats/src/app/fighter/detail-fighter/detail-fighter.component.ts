@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {FightersService} from "../fighters/fighters.service";
 import {Fighter} from "@models/shared";
-import {AdminService} from "../../admin/admin.service";
+import {UserService} from "../../admin/admin.service";
 
 @Component({
   selector: 'app-detail-fighter',
@@ -18,7 +18,7 @@ export class DetailFighterComponent implements OnInit{
   constructor(
     private route: ActivatedRoute,
     private fightersService: FightersService,
-    private adminService: AdminService
+    private adminService: UserService
   ) {
   }
 

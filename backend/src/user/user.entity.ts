@@ -1,4 +1,4 @@
-import { IUser } from '@hero/shared';
+import { IUser } from '@models/shared';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 export class User implements IUser {

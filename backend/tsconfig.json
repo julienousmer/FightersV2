@@ -1,6 +1,6 @@
 {
    "compilerOptions": {
-      "paths": {"@hero/shared": ["../shared"]},
+      "paths": {"@models/shared": ["../shared"]},
       "lib": [
          "es5",
          "es6"

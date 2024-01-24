@@ -1,3 +1,4 @@
 export {Fighter} from "./models/fighter";
 export {Category} from "./models/category"
-export {Admin} from "./models/Admin"
+export {IUser} from "./models/User"
+export {WeightCategory, WeightCategoryUtil} from "./enums/weightCategory"

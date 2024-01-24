@@ -24,7 +24,7 @@
       "dom"
     ],
     "paths": {
-      "@models/shared": ["../shared/models/fighter.ts"]
+      "@models/shared": ["../shared"]
     }
   },
   "angularCompilerOptions": {

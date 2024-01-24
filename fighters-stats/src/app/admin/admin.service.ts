@@ -1,30 +1,30 @@
 import { Injectable } from '@angular/core';
-import {Admin} from "../../../../shared/models/Admin";
+import {IUser} from "@models/shared";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminService {
+export class UserService {
 
-  private admins: Array<Admin> = [
+  private admins: Array<IUser> = [
     {
       id: 1,
-      pseudo: "Borloo",
+      username: "Borloo",
       password: "Borloo"
     },
     {
       id: 2,
-      pseudo: "Smehou",
+      username: "Smehou",
       password: "Smehou"
     },
     {
       id: 3,
-      pseudo: "Blbcrv",
+      username: "Blbcrv",
       password: "Blbcrv"
     },
     {
       id: 4,
-      pseudo: "Svlmon",
+      username: "Svlmon",
       password: "Svlmon"
     },
   ]
@@ -40,8 +40,8 @@ export class AdminService {
     this.isAuth = auth;
   }
 
-  public isAdmin(pseudo: string, password: string): boolean{
-    if (this.admins.find(f => f.pseudo === pseudo && f.password === password)){
+  public isAdmin(username: string, password: string): boolean{
+    if (this.admins.find(f => f.username === username && f.password === password)){
       this.set_auth(true);
       return this.isAuth;
     }else{
