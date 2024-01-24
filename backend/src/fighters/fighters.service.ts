@@ -1,26 +1,33 @@
 import { Injectable } from '@nestjs/common';
 import {IFighter} from "@models/shared";
+import {InjectRepository} from "@nestjs/typeorm";
+import {Fighter} from "./entities/fighter.entity";
+import {Repository} from "typeorm";
 
 
 @Injectable()
 export class FightersService {
-  create(createFighter: IFighter) {
-    return 'This action adds a new fighter';
+ constructor(
+     @InjectRepository(Fighter) private readonly fighterRepository: Repository<Fighter>,
+ ) {}
+
+  async create(createFighter: Fighter) {
+    return await this.fighterRepository.insert(createFighter);
   }
 
-  findAll() {
-    return `This action returns all fighters`;
+  async findAll(): Promise<Fighter[]> {
+   return await this.fighterRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} fighter`;
+  async findOne(id: number): Promise<Fighter> {
+    return await this.fighterRepository.findOneBy({id: id});
   }
 
-  update(id: number, updateFighter: IFighter) {
-    return `This action updates a #${id} fighter`;
+  async update(id: number, updateFighter: Fighter) {
+    return await this.fighterRepository.update(id, updateFighter);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} fighter`;
+    return this.fighterRepository.delete(id);
   }
 }
