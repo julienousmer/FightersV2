@@ -1,4 +1,4 @@
-import { Category } from './Category';
+import { ICategory } from './ICategory';
 
 export interface IFighter {
   id: number;
@@ -11,5 +11,5 @@ export interface IFighter {
   nbWin: number;
   nbLose: number;
   sexe: string;
-  category: Category | null;
+  category: ICategory | null;
 }

@@ -6,4 +6,5 @@ export interface ICategory {
   min_weight: number;
   max_weight: number;
   champion: IFighter | null;
+  fighters: IFighter[] | null;
 }
