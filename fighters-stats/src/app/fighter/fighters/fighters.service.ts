@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
 import {Fighter} from "../../models/fighter";
 import {CategoryService} from "../category/category.service";
-
 
 
 @Injectable({
@@ -92,16 +91,95 @@ export class FightersService {
       sexe: 'M',
       category: this.categoryService.getCategoryById(6),
 
-    }
+    },
+    {
+      id: 7,
+      firstname: "Alexandre",
+      lastname: "Pantoja",
+      age: 33,
+      weight: 56,
+      height: 165,
+      reach: 170,
+      nbWin: 11,
+      nbLose: 3,
+      sexe: 'M',
+      category: this.categoryService.getCategoryById(1), // Poids Mouches
+    },
+    {
+      id: 8,
+      firstname: "Brandon",
+      lastname: "Moreno",
+      age: 30,
+      weight: 56,
+      height: 170,
+      reach: 178,
+      nbWin: 9,
+      nbLose: 4,
+      sexe: 'M',
+      category: this.categoryService.getCategoryById(1), // Poids Mouches
+    },
+    {
+      id: 9,
+      firstname: "Benoit",
+      lastname: "Saint-Denis",
+      age: 28,
+      weight: 70,
+      height: 180,
+      reach: 185,
+      nbWin: 5,
+      nbLose: 1,
+      sexe: 'M',
+      category: this.categoryService.getCategoryById(4), // Poids Mouches
+    },
+    {
+      id: 10,
+      firstname: "Alexa",
+      lastname: "Grasso",
+      age: 30,
+      weight: 56,
+      height: 165,
+      reach: 168,
+      nbWin: 8,
+      nbLose: 3,
+      sexe: 'M',
+      category: this.categoryService.getCategoryById(10), // Poids Mouches
+    },
+    {
+      id: 11,
+      firstname: "Manon",
+      lastname: "Fiorot",
+      age: 33,
+      weight: 56,
+      height: 170,
+      reach: 165,
+      nbWin: 6,
+      nbLose: 0,
+      sexe: 'M',
+      category: this.categoryService.getCategoryById(10), // Poids Mouches
+    },
+    {
+      id: 12,
+      firstname: "Colby",
+      lastname: "Covington",
+      age: 35,
+      weight: 77,
+      height: 180,
+      reach: 183,
+      nbWin: 12,
+      nbLose: 4,
+      sexe: 'M',
+      category: this.categoryService.getCategoryById(5), // Poids Mouches
+    },
   ]
+
   constructor(private categoryService: CategoryService) {
   }
 
-  getAllFighters(): Observable<Array<Fighter>>{
+  getAllFighters(): Observable<Array<Fighter>> {
     return of(this.fighters)
   }
 
-  getById(id: number): Observable<Fighter|undefined>{
+  getById(id: number): Observable<Fighter | undefined> {
     return of(this.fighters.find(f => f.id === id))
   }
 
