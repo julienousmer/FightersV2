@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
-import { Fighter } from '../../models/fighter';
+import { Fighter } from "@models/shared";
 import {AdminService} from "../../admin/admin.service";
 import {Router} from "@angular/router";
 

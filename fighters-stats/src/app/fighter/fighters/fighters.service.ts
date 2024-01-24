@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
-import {Fighter} from "../../models/fighter";
+import {Fighter} from "@models/shared";
 import {CategoryService} from "../category/category.service";
 
 

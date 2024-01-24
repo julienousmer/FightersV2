@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FightersService} from "./fighters.service";
-import {Fighter} from "../../models/fighter";
-import {WeightCategory, WeightCategoryUtil} from "../../enums/weightCategory";
+import {Fighter} from "@models/shared";
+import {WeightCategory, WeightCategoryUtil} from "../../../../../shared/enums/weightCategory";
 
 @Component({
   selector: 'app-fighters',

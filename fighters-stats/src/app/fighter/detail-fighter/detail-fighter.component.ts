@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {FightersService} from "../fighters/fighters.service";
-import {Fighter} from "../../models/fighter";
+import {Fighter} from "@models/shared";
 import {AdminService} from "../../admin/admin.service";
 
 @Component({

@@ -1,4 +1,4 @@
-import {Category} from "../fighter/category/category.model";
+import {Category} from "../../fighters-stats/src/app/fighter/category/category.model";
 
 export interface Fighter {
   id: number;

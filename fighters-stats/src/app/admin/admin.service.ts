@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Admin} from "../models/Admin";
+import {Admin} from "../../../../shared/models/Admin";
 
 @Injectable({
   providedIn: 'root'
