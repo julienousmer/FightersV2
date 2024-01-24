@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import {Fighter} from "@models/shared";
+import {IFighter} from "@models/shared";
 
 
 @Injectable()
 export class FightersService {
-  create(createFighter: Fighter) {
+  create(createFighter: IFighter) {
     return 'This action adds a new fighter';
   }
 
@@ -16,7 +16,7 @@ export class FightersService {
     return `This action returns a #${id} fighter`;
   }
 
-  update(id: number, updateFighter: Fighter) {
+  update(id: number, updateFighter: IFighter) {
     return `This action updates a #${id} fighter`;
   }
 

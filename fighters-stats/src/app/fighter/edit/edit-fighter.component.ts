@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
-import { Fighter } from "@models/shared";
+import { IFighter } from "@models/shared";
 import {UserService} from "../../admin/admin.service";
 import {Router} from "@angular/router";
 
@@ -12,11 +12,11 @@ import {Router} from "@angular/router";
 export class EditFighterComponent {
 
   @Input()
-  model: Fighter | undefined | null;
+  model: IFighter | undefined | null;
   @Input()
   isEdit!: boolean;
   @Output()
-  emitFighter: EventEmitter<Fighter> = new EventEmitter<Fighter>();
+  emitFighter: EventEmitter<IFighter> = new EventEmitter<IFighter>();
 
   fighterForm = this.fb.group({
     firstname: [''],

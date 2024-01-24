@@ -1,13 +1,13 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { FightersService } from './fighters.service';
-import {Fighter} from '@models/shared';
+import {IFighter} from '@models/shared';
 
 @Controller('fighters')
 export class FightersController {
   constructor(private readonly fightersService: FightersService) {}
 
   @Post()
-  create(@Body() createFighter: Fighter) {
+  create(@Body() createFighter: IFighter) {
     return this.fightersService.create(createFighter);
   }
 
@@ -22,7 +22,7 @@ export class FightersController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateFighter: Fighter) {
+  update(@Param('id') id: string, @Body() updateFighter: IFighter) {
     return this.fightersService.update(+id, updateFighter);
   }
 

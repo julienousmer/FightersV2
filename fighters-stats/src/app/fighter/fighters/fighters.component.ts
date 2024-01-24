@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FightersService} from "./fighters.service";
-import {Fighter} from "@models/shared";
+import {IFighter} from "@models/shared";
 import {WeightCategory, WeightCategoryUtil} from "@models/shared";
 
 @Component({
@@ -10,7 +10,7 @@ import {WeightCategory, WeightCategoryUtil} from "@models/shared";
 })
 export class FightersComponent implements OnInit {
 
-  fightersList: Array<Fighter> | undefined;
+  fightersList: Array<IFighter> | undefined;
 
   ngOnInit() {
     console.log(WeightCategoryUtil.parse(WeightCategoryUtil.toString(WeightCategory.Featherweight)));

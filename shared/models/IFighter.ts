@@ -1,6 +1,6 @@
-import {Category} from "../../fighters-stats/src/app/fighter/category/category.model";
+import { Category } from './Category';
 
-export interface Fighter {
+export interface IFighter {
   id: number;
   firstname: string;
   lastname: string;
