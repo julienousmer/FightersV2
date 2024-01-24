@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FightersService} from "./fighters.service";
 import {Fighter} from "../../models/fighter";
+import {WeightCategory, WeightCategoryUtil} from "../../enums/weightCategory";
 
 @Component({
   selector: 'app-fighters',
@@ -10,23 +11,15 @@ import {Fighter} from "../../models/fighter";
 export class FightersComponent implements OnInit {
 
   fightersList: Array<Fighter> | undefined;
-  currentFighter!: Fighter | null;
 
   ngOnInit() {
+    console.log(WeightCategoryUtil.parse(WeightCategoryUtil.toString(WeightCategory.Featherweight)));
     this.fighterService.getAllFighters().subscribe(resFighters => {
       this.fightersList = resFighters
     })
   }
 
   constructor(private fighterService: FightersService) {
-  }
-
-
-  setCurrentFighter(fighter: Fighter) {
-    this.currentFighter = null;
-    setTimeout(() => {
-      this.currentFighter = fighter;
-    }, 10)
   }
 
 }

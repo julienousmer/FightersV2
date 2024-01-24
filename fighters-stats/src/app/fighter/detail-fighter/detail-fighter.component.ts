@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {FightersService} from "../fighters/fighters.service";
 import {Fighter} from "../../models/fighter";
+import {AdminService} from "../../admin/admin.service";
 
 @Component({
   selector: 'app-detail-fighter',
@@ -16,16 +17,15 @@ export class DetailFighterComponent implements OnInit{
 
   constructor(
     private route: ActivatedRoute,
-    private fightersService: FightersService
+    private fightersService: FightersService,
+    private adminService: AdminService
   ) {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      if (params['isEdit']){
-        this.isEdit = params['isEdit'];
-      }
-    })
+    if (this.adminService.get_auth()){
+      this.isEdit = true
+    }
     this.route.paramMap.subscribe(params => {
       if (params.has('id')){
         let idFighter = params.get('id');

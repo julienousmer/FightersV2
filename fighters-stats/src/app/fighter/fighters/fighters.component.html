@@ -1,35 +1,60 @@
-<div class="container-fluid my-5">
-  <div *ngIf="fightersList">
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th scope="col">Firstname</th>
-        <th scope="col">Lastname</th>
-        <th scope="col">Weight</th>
-        <th scope="col">Actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let fighter of fightersList">
-        <td>{{fighter.firstname}}</td>
-        <td>{{fighter.lastname}}</td>
-        <td>{{fighter.weight}}</td>
-        <td>
-          <a class="btn btn-warning me-2" (click)="setCurrentFighter(fighter)"  [routerLink]="['/fighter/edit/', fighter.id]" [queryParams]="{isEdit: true}" routerLinkActive="activeLinkClass">
-            Edit
-        </a>
-          <a class="btn btn-secondary" [routerLink]="['/fighter/detail/', fighter.id ]" routerLinkActive="activeLinkClass">Voir</a>
-        </td>
-      </tr>
-      </tbody>
-      <tfoot>
-      <input type="button" class="btn btn-edit">
-    </tfoot>
-  </table>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <h2>Fighters list</h2>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+      </div>
+      <div class="card-content">
+        <div *ngIf="fightersList">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Weight (kg)</th>
+              <th scope="col">Height (cm)</th>
+              <th scope="col">Wins/Loses</th>
+              <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let fighter of fightersList">
+              <td>{{fighter.firstname}} {{fighter.lastname}}</td>
+              <td>{{fighter.weight}}</td>
+              <td>{{fighter.height}}</td>
+              <td>{{fighter.nbWin}} - {{fighter.nbLose}}</td>
+              <td>
+                <a class="btn btn-warning" [routerLink]="['/fighter/detail/', fighter.id]" routerLinkActive="activeLinkClass">Details</a>
+              </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <input type="button" class="btn btn-edit">
+            </tfoot>
+          </table>
+        </div>
+        <div *ngIf="!fightersList">
+          <p>Chargement ...</p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <h4>Fighters stats</h4>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div *ngIf="!fightersList">
-    <p>Chargement ...</p>
-  </div>
+  <div class="col-md-2"></div>
 </div>
 
 
