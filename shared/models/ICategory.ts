@@ -1,6 +1,6 @@
 import {IFighter} from "./IFighter";
 
-export interface Category {
+export interface ICategory {
   id: number;
   name: string;
   min_weight: number;
