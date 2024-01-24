@@ -1,5 +1,4 @@
 import {Injectable} from '@nestjs/common';
-import {ICategory} from '@models/shared';
 import {InjectRepository} from "@nestjs/typeorm";
 import {InsertResult, Repository} from "typeorm";
 import {Category} from "./entities/category.entity";
