@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import {DataSource} from 'typeorm'
-export const dbProperties: DataSource = new DataSource(
+
+export const dbProperties : any  =(
     {
       type: 'mysql',
       host: '87.106.122.236',
