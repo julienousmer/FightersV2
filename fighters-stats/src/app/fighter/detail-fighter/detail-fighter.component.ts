@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {FightersService} from "../fighters/fighters.service";
-import {Fighter} from "@models/shared";
+import {IFighter} from "@models/shared";
 import {UserService} from "../../admin/admin.service";
 
 @Component({
@@ -12,7 +12,7 @@ import {UserService} from "../../admin/admin.service";
 export class DetailFighterComponent implements OnInit{
 
   @Input()
-  fighter!: Fighter | undefined;
+  fighter!: IFighter | undefined;
   isEdit: boolean = false;
 
   constructor(

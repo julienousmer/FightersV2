@@ -1,6 +1,6 @@
-import {Category} from "../../fighters-stats/src/app/fighter/category/category.model";
+import { ICategory } from './ICategory';
 
-export interface Fighter {
+export interface IFighter {
   id: number;
   firstname: string;
   lastname: string;
@@ -11,5 +11,5 @@ export interface Fighter {
   nbWin: number;
   nbLose: number;
   sexe: string;
-  category: Category | null;
+  category: ICategory | null;
 }

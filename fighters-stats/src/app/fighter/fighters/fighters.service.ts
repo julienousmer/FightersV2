@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
-import {Fighter} from "@models/shared";
+import {IFighter} from "@models/shared";
 import {CategoryService} from "../category/category.service";
 
 
@@ -9,7 +9,7 @@ import {CategoryService} from "../category/category.service";
 })
 export class FightersService {
 
-  private fighters: Array<Fighter> = [
+  private fighters: Array<IFighter> = [
     {
       id: 1,
       firstname: "Aalon",
@@ -175,11 +175,11 @@ export class FightersService {
   constructor(private categoryService: CategoryService) {
   }
 
-  getAllFighters(): Observable<Array<Fighter>> {
+  getAllFighters(): Observable<Array<IFighter>> {
     return of(this.fighters)
   }
 
-  getById(id: number): Observable<Fighter | undefined> {
+  getById(id: number): Observable<IFighter | undefined> {
     return of(this.fighters.find(f => f.id === id))
   }
 
