@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import { IFighter } from "@models/shared";
-import {UserService} from "../../admin/admin.service";
 import {Router} from "@angular/router";
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'app-edit-fighter',
@@ -56,7 +56,7 @@ export class EditFighterComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private adminService: UserService
+    private authService : AuthService
   ) {
   }
 
@@ -65,7 +65,7 @@ export class EditFighterComponent {
   }
 
   public toggleEdit(): Promise<boolean> | boolean{
-    if (this.adminService.get_auth()){
+    if (this.authService.isLoggedIn()){
       this.isEdit = true;
       return true;
     }else {

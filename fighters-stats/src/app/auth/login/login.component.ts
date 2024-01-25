@@ -4,9 +4,9 @@ import {Router} from "@angular/router";
 import {AuthService} from "../auth.service";
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  selector: 'app-user',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
 

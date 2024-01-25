@@ -7,10 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./fighter/fighter.module').then(m => m.FighterModule),
   },
   {
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
   },
-  {path: '', redirectTo: 'fighter/list', pathMatch: 'full'},
+  {path: '', redirectTo: 'auth', pathMatch: 'full'},
 ];
 
 @NgModule({
