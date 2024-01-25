@@ -4,9 +4,12 @@ import {LoginComponent} from "./login/login.component";
 
 const routes: Routes = [
   {
-  path: 'login', component: LoginComponent, pathMatch: 'full'
+    path: 'auth',
+    children: [
+      {path: 'login', component: LoginComponent, pathMatch: 'full'},
+      {redirectTo: 'login', path: '', pathMatch: 'full'}
+    ]
   }
-
 ];
 @NgModule({
   imports: [
