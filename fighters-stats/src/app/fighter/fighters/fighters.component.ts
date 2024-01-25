@@ -16,7 +16,6 @@ export class FightersComponent implements OnInit {
     this.http.get<Array<IFighter>>('http://localhost:3000/fighters').subscribe(data => {
       this.fightersList = data;
     });
-    console.log(this.fightersList);
   }
 
   constructor(private http: HttpClient) {

@@ -9,10 +9,11 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
-    return this.http.post<{ access_token: string }>(environment.backendUrl + '/auth', {username, password})
-      // .subscribe(res => {
-      //   this.setSession(res.access_token);
-      // });
+    return this.http.post<{ access_token: string }>(environment.backendUrl + '/auth',
+      {
+        username,
+        password
+      })
   }
 
   private setSession(authToken: string) {

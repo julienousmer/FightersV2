@@ -32,6 +32,7 @@ export class EditFighterComponent {
   })
 
   ngOnInit() {
+    console.log(this.model)
     this.isEdit = this.isReadOnly
     if (this.model === null) {
       this.model = {
@@ -69,7 +70,7 @@ export class EditFighterComponent {
       this.isEdit = true;
       return true;
     }else {
-      return this.router.navigate(["/admin/login"], {
+      return this.router.navigate(["/auth/login"], {
         queryParams: {
           redirectTo: this.model?.id
         }

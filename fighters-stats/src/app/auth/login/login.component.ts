@@ -32,6 +32,7 @@ export class LoginComponent {
           this.router.navigate([this.urlRedirectTo]).then(r => console.log(r));
         } else {
           this.errorMessage = "Identifiant ou mot de passe incorrects.";
+          console.log(this.errorMessage);
         }
       });
   }

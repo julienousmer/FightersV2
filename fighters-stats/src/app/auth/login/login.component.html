@@ -1,7 +1,20 @@
-<form [formGroup]="loginForm">
-<input class="form-control" id="username" type="text"
-       formControlName="username" value="Username">
-<input type="password" value="Password">
-  <a type="submit" class="btn btn-outline-success">Submit</a>
-</form>
-<p>ok</p>
+<div class="container mt-5">
+
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{this.errorMessage}}
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <label for="username">Username</label>
+        <input class="form-control" id="username" type="text" formControlName="username">
+      </div>
+      <div class="col-md-6">
+        <label for="password">Password</label>
+        <input class="form-control" id="password" type="password" formControlName="username">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-outline-success mt-3 float-end">Submit</button>
+  </form>
+</div>
