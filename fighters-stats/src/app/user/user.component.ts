@@ -26,13 +26,18 @@ export class UserComponent {
 
  login() {
    this.authService.login(this.adminForm.value.username, this.adminForm.value.password)
-      .subscribe(
-        (response) => {
-          this.router.navigate([this.urlRedirectTo]).then(r => console.log(r));
-        },
-        (error) => {
-          this.errorMessage = error.error.message;
+      .subscribe({
+          next: test => {
+            console.log(test);
+          },
+          error: err => console.error(err)
         }
+        // (response) => {
+        //   this.router.navigate([this.urlRedirectTo]).then(r => console.log(r));
+        // },
+        // (error) => {
+        //   this.errorMessage = error.error.message;
+        // }
       );
  }
 

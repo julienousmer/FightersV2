@@ -12,7 +12,7 @@ import {AuthService} from "../../auth/auth.service";
 export class DetailFighterComponent implements OnInit {
 
   @Input()
-  fighter!: IFighter | undefined;
+  fighter!: IFighter;
   isEdit: boolean = false;
 
   constructor(
@@ -23,18 +23,10 @@ export class DetailFighterComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.authService.isLoggedIn()) {
-      this.isEdit = true;
-      this.http.put<IFighter>('http://localhost:3000/fighters/' + this.route.snapshot.params['id'], this.fighter).subscribe(data => {
-        this.fighter = data;
-      });
-
-    } else {
-      this.isEdit = false;
-      this.http.get<IFighter>('http://localhost:3000/fighters/' + this.route.snapshot.params['id']).subscribe(data => {
-        this.fighter = data;
-      });
-    }
+    this.isEdit = this.authService.isLoggedIn();
+    this.http.get<IFighter>('http://localhost:3000/fighters/' + this.route.snapshot.params['id']).subscribe(data => {
+      this.fighter = data;
+    });
   }
 
 }

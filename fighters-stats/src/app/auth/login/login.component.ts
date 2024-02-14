@@ -15,8 +15,6 @@ export class LoginComponent {
     password: ['']
   });
   errorMessage: string | undefined;
-  urlRedirectTo: string = "";
-
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,9 +25,13 @@ export class LoginComponent {
 
   login() {
     this.authService.login(this.loginForm.value.username, this.loginForm.value.password)
-      .subscribe(() => {
+      .subscribe(response => {
+        if (response){
+          console.log(response);
+          this.authService.setSession(response.access_token);
+        }
         if (this.authService.isLoggedIn()) {
-          this.router.navigate([this.urlRedirectTo]).then(r => console.log(r));
+          this.router.navigate(['/fighter/list']).then(r => console.log(r));
         } else {
           this.errorMessage = "Identifiant ou mot de passe incorrects.";
           console.log(this.errorMessage);

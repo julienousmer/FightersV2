@@ -16,7 +16,7 @@ export class AuthService {
       })
   }
 
-  private setSession(authToken: string) {
+  setSession(authToken: string) {
     localStorage.setItem('expires_at', (Date.now() + 60 * 60 * 1000).toString());
     localStorage.setItem('id_token', authToken);
   }
