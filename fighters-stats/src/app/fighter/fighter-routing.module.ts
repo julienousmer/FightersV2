@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {DetailFighterComponent} from "./detail-fighter/detail-fighter.component";
 import {FightersComponent} from "./fighters/fighters.component";
-import {AuthGuard} from "../utils/auth/auth.guard";
 
 const routes: Routes = [
   {

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FightersService} from "./fighters.service";
 import {IFighter} from "@models/shared";
 import {WeightCategory, WeightCategoryUtil} from "@models/shared";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-fighters',
@@ -13,13 +13,12 @@ export class FightersComponent implements OnInit {
   fightersList: Array<IFighter> | undefined;
 
   ngOnInit() {
-    console.log(WeightCategoryUtil.parse(WeightCategoryUtil.toString(WeightCategory.Featherweight)));
-    this.fighterService.getAllFighters().subscribe(resFighters => {
-      this.fightersList = resFighters
-    })
+    this.http.get<Array<IFighter>>('http://localhost:3000/fighters').subscribe(data => {
+      this.fightersList = data;
+    });
   }
 
-  constructor(private fighterService: FightersService) {
+  constructor(private http: HttpClient) {
   }
 
 }

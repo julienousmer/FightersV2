@@ -1,22 +1,21 @@
-import {AdminComponent} from "./admin.component";
+import {UserComponent} from "./user.component";
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {ReactiveFormsModule} from "@angular/forms";
-import {FighterModule} from "../fighter/fighter.module";
-import {AdminRoutingModule} from "./admin-routing.module";
+import {RouterLink} from "@angular/router";
 
 
 @NgModule({
   declarations: [
-    AdminComponent
+    UserComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    AdminRoutingModule
+    RouterLink,
   ],
   exports: [
-    AdminComponent
+    UserComponent
   ]
 })
-export class AdminModule { }
+export class UserModule { }

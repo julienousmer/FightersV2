@@ -1,18 +1,18 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import { IFighter } from "@models/shared";
-import {UserService} from "../../admin/admin.service";
 import {Router} from "@angular/router";
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'app-edit-fighter',
   templateUrl: './edit-fighter.component.html',
   styleUrls: ['./edit-fighter.component.scss']
 })
-export class EditFighterComponent {
+export class EditFighterComponent implements OnInit{
 
   @Input()
-  model: IFighter | undefined | null;
+  model!: IFighter;
   @Input()
   isEdit!: boolean;
   @Output()
@@ -32,7 +32,9 @@ export class EditFighterComponent {
   })
 
   ngOnInit() {
-    this.isEdit = this.isReadOnly
+    console.log(this.model);
+    console.log(this.isEdit);
+    this.isEdit = this.isReadOnly();
     if (this.model === null) {
       this.model = {
         id: 1,
@@ -51,25 +53,26 @@ export class EditFighterComponent {
       // @ts-ignore
       this.fighterForm.patchValue(this.model!);
     }
+
   }
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private adminService: UserService
+    private authService : AuthService
   ) {
   }
 
-  get isReadOnly(): boolean {
+  isReadOnly(): boolean {
     return this.isEdit;
   }
 
   public toggleEdit(): Promise<boolean> | boolean{
-    if (this.adminService.get_auth()){
+    if (this.authService.isLoggedIn()){
       this.isEdit = true;
       return true;
     }else {
-      return this.router.navigate(["/admin/login"], {
+      return this.router.navigate(["/auth/login"], {
         queryParams: {
           redirectTo: this.model?.id
         }

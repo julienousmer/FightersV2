@@ -1,41 +1,32 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {FightersService} from "../fighters/fighters.service";
 import {IFighter} from "@models/shared";
-import {UserService} from "../../admin/admin.service";
+import {HttpClient} from "@angular/common/http";
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'app-detail-fighter',
   templateUrl: './detail-fighter.component.html',
   styleUrls: ['./detail-fighter.component.scss']
 })
-export class DetailFighterComponent implements OnInit{
+export class DetailFighterComponent implements OnInit {
 
   @Input()
-  fighter!: IFighter | undefined;
+  fighter!: IFighter;
   isEdit: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
-    private fightersService: FightersService,
-    private adminService: UserService
+    private http: HttpClient,
+    private authService: AuthService,
   ) {
   }
 
   ngOnInit() {
-    if (this.adminService.get_auth()){
-      this.isEdit = true
-    }
-    this.route.paramMap.subscribe(params => {
-      if (params.has('id')){
-        let idFighter = params.get('id');
-        if (idFighter != null){
-          this.fightersService.getById(parseInt(idFighter)).subscribe(resFighter => {
-            this.fighter = resFighter;
-          })
-        }
-      }
-    })
+    this.isEdit = this.authService.isLoggedIn();
+    this.http.get<IFighter>('http://localhost:3000/fighters/' + this.route.snapshot.params['id']).subscribe(data => {
+      this.fighter = data;
+    });
   }
 
 }
