@@ -30,7 +30,7 @@
             <tbody [formGroup]="fightersForm">
             <ng-container formArrayName="fighters">
               <tr *ngFor="let fighter of myFighterForm().controls; let i = index" [formGroupName]="i">
-                <td><input type="text" formControlName="firstname"> <input type="text" formControlName="lastname">}</td>
+                <td><input type="text" formControlName="firstname"> <input type="text" formControlName="lastname"></td>
                 <td><input type="number" formControlName="weight"></td>
                 <td><input type="number" formControlName="height"></td>
                 <td><input type="number" formControlName="nbWin"> - <input type="number" formControlName="nbLose"></td>

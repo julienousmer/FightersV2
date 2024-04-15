@@ -167,6 +167,77 @@ export class FightersComponent implements OnInit, OnDestroy {
   }
 
   addFighterFormLine() {
-    
+    const newFighter = this.fb.group(
+      {
+        id: null,
+        firstname: [
+          "",
+          [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(25),
+          ],
+        ],
+        lastname: [
+          "",
+          [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(50),
+          ],
+        ],
+        age: [
+          null,
+          [
+            Validators.min(16),
+            Validators.max(55),
+          ],
+        ],
+        weight: [
+          null,
+          [
+            Validators.required,
+            Validators.min(45),
+            Validators.max(160),
+          ],
+        ],
+        height: [
+          null,
+          [
+            Validators.required,
+            Validators.min(45),
+            Validators.max(250),
+          ],
+        ],
+        reach: [
+          null,
+          [
+            Validators.min(20),
+            Validators.max(150),
+          ],
+        ],
+        nbWin: [
+          null,
+          [
+            Validators.required,
+            Validators.min(0),
+            Validators.max(100),
+          ],
+        ],
+        nbLose: [
+          null,
+          [
+            Validators.required,
+            Validators.min(0),
+            Validators.max(100),
+          ],
+        ],
+        sexe: [
+          null,
+        ],
+        category: [null],
+      }
+    );
+    this.myFighterForm().push(newFighter);
   }
 }
