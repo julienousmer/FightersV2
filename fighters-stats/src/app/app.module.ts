@@ -12,6 +12,8 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AuthRoutingModule} from "./auth/auth-routing.module";
 import {FighterRoutingModule} from "./fighter/fighter-routing.module";
 import { ServiceWorkerModule } from '@angular/service-worker';
+import {AppUpdateService} from "../sw-update.service";
+import {OnlineStatusService} from "../online-status.service";
 
 @NgModule({
   declarations: [
@@ -33,11 +35,15 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       registrationStrategy: 'registerWhenStable:30000'
     }),
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    OnlineStatusService,
+    AppUpdateService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FightersService } from './fighters.service';
+import { SwUpdateService } from './sw-update.service';
 
-describe('FighterService', () => {
-  let service: FightersService;
+describe('SwUpdateService', () => {
+  let service: SwUpdateService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FightersService);
+    service = TestBed.inject(SwUpdateService);
   });
 
   it('should be created', () => {
