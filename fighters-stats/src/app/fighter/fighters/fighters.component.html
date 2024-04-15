@@ -8,12 +8,16 @@
           <div class="col-md-4">
             <h2>Fighters list</h2>
           </div>
-          <div class="col-md-4"></div>
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <a class="btn btn-success" (click)="addFighterFormLine()">Add</a>
+          </div>
+          <div class="col-md-1"></div>
         </div>
       </div>
       <div class="card-content">
         <div *ngIf="fightersList">
-          <table class="table table-striped">
+          <table class="table table-striped" *ngIf="isLoaded">
             <thead>
             <tr>
               <th scope="col">Name</th>
@@ -23,20 +27,21 @@
               <th scope="col">Actions</th>
             </tr>
             </thead>
-            <tbody>
-            <tr *ngFor="let fighter of fightersList">
-              <td>{{fighter.firstname}} {{fighter.lastname}}</td>
-              <td>{{fighter.weight}}</td>
-              <td>{{fighter.height}}</td>
-              <td>{{fighter.nbWin}} - {{fighter.nbLose}}</td>
-              <td>
-                <a class="btn btn-warning" [routerLink]="['/fighter/detail/', fighter.id]" routerLinkActive="activeLinkClass">Details</a>
-              </td>
-            </tr>
+            <tbody [formGroup]="fightersForm">
+            <ng-container formArrayName="fighters">
+              <tr *ngFor="let fighter of myFighterForm().controls; let i = index" [formGroupName]="i">
+                <td><input type="text" formControlName="firstname"> <input type="text" formControlName="lastname">}</td>
+                <td><input type="number" formControlName="weight"></td>
+                <td><input type="number" formControlName="height"></td>
+                <td><input type="number" formControlName="nbWin"> - <input type="number" formControlName="nbLose"></td>
+                <td>
+                  <a class="btn btn-warning"
+                     [routerLink]="['/fighter/detail/', myFighterForm().controls[i].get('id')?.value]"
+                     routerLinkActive="activeLinkClass">Details</a>
+                </td>
+              </tr>
+            </ng-container>
             </tbody>
-            <tfoot>
-            <input type="button" class="btn btn-edit">
-            </tfoot>
           </table>
         </div>
         <div *ngIf="!fightersList">
@@ -56,5 +61,3 @@
   </div>
   <div class="col-md-2"></div>
 </div>
-
-
