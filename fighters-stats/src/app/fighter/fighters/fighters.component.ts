@@ -43,7 +43,7 @@ export class FightersComponent implements OnInit, OnDestroy {
 
     this.http.get<Array<IFighter>>('http://localhost:3000/fighters').subscribe(data => {
       for (const fighter of data) {
-        this.addFighterForm(fighter).then(r => console.log(r));
+        this.addFighterForm(fighter).then(r => null);
         this.isLoaded = true;
       }
       this.fightersList = data;
@@ -186,13 +186,7 @@ export class FightersComponent implements OnInit, OnDestroy {
             Validators.maxLength(50),
           ],
         ],
-        age: [
-          null,
-          [
-            Validators.min(16),
-            Validators.max(55),
-          ],
-        ],
+        age: [99],
         weight: [
           null,
           [
@@ -209,13 +203,7 @@ export class FightersComponent implements OnInit, OnDestroy {
             Validators.max(250),
           ],
         ],
-        reach: [
-          null,
-          [
-            Validators.min(20),
-            Validators.max(150),
-          ],
-        ],
+        reach: [999],
         nbWin: [
           null,
           [
@@ -233,11 +221,30 @@ export class FightersComponent implements OnInit, OnDestroy {
           ],
         ],
         sexe: [
-          null,
+          'N',
         ],
         category: [null],
       }
     );
     this.myFighterForm().push(newFighter);
+  }
+
+  saveAllFighter() {
+    const formFighters = this.myFighterForm().controls;
+
+    formFighters.forEach(formFighter => {
+      const formFighterData = formFighter.value;
+      if (formFighterData.id) {
+        this.http.patch(`http://localhost:3000/fighters/${formFighterData.id}`, formFighterData).subscribe({
+          next: (response) => console.log('Fighter updated', response),
+          error: (error) => console.error('Error updating fighter', error)
+      });
+      } else {
+        this.http.post('http://localhost:3000/fighters', formFighterData).subscribe({
+            next: (response) => console.log('Fighter added', response),
+            error: (error) => console.error('Error adding fighter', error)
+        });
+      }
+    });
   }
 }

@@ -12,7 +12,9 @@
           <div class="col-md-2">
             <a class="btn btn-success" (click)="addFighterFormLine()">Add</a>
           </div>
-          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <a class="btn btn-success" (click)="saveAllFighter()">Save all</a>
+          </div>
         </div>
       </div>
       <div class="card-content">
@@ -33,7 +35,7 @@
                 <td><input type="text" formControlName="firstname"> <input type="text" formControlName="lastname"></td>
                 <td><input type="number" formControlName="weight"></td>
                 <td><input type="number" formControlName="height"></td>
-                <td><input type="number" formControlName="nbWin"> - <input type="number" formControlName="nbLose"></td>
+                <td><input type="number" formControlName="nbWin"><input type="number" formControlName="nbLose"></td>
                 <td>
                   <a class="btn btn-warning"
                      [routerLink]="['/fighter/detail/', myFighterForm().controls[i].get('id')?.value]"
