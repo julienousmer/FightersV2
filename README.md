@@ -16,7 +16,7 @@ plusieurs sections expliquées ci-dessous.
 
 Clonage du répertoire
 ```bash
-git clone https://github.com/Borloo/express-spotilike
+git clone https://github.com/julienousmer/FightersV2.git
 ```
 
 ### Pré-requis
