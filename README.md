@@ -29,10 +29,6 @@ git clone https://github.com/julienousmer/FightersV2.git
 npm install
 ```
 
-```bash
-npm run install-project-dependencies
-```
-
 ## Base de données
 
 <img src="./assets/images/DB_schemas.png" alt="DB schemas">
