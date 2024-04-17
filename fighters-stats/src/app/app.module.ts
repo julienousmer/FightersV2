@@ -4,7 +4,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {UserModule} from "./user/user.module";
 import {FighterModule} from "./fighter/fighter.module";
 import {AuthModule} from "./auth/auth.module";
 import {AuthInterceptor} from "../auth.interceptor";
@@ -21,7 +20,6 @@ import {OnlineStatusService} from "../online-status.service";
   ],
   imports: [
     BrowserModule,
-    UserModule,
     AuthModule,
     FighterModule,
     AuthRoutingModule,
