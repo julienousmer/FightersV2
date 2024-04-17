@@ -1,19 +1,13 @@
-# express-spotilike
+# Fighter-Stats
 
-Ce projet englobe une application backend API REST Express et une application Angular répertoriant des 
-Artistes et affiche leurs détails. Réalisé dans le cadre du module Node.js de ma formation, ce projet se décompose en 
+Ce projet englobe une application backend et un frontend Angular. Réalisé dans le cadre du module Angular de notre formation, ce projet se décompose en 
 plusieurs sections expliquées ci-dessous.
 
 ## Outils et technos utilisées
 
 - Node.js : Environnement de développement JavaScript côté serveur
-- Express.js : Framework web pour construire des applications REST
-- SQLite : Solution de base de données légère
-- Sequelize : ORM pour simplifier les interactions avec la base de données
 - WebStorm : Excellente prise en charge de Node.js et Angular
 - GitKraken : Client Git qui facilite le versioning
-- Postman : Outils de tests d'API
-- DataGrip: Outils de la suite IntelliJ permettant de gérer une base de données
 - Angular : Framework TypeScript facile à initialiser
 
 ## Installation en local
@@ -754,10 +748,4 @@ Puis dans un autre terminal
 npm run start_frontend
 ```
 
-## Tester l'API
-
-Comme présenter au début, pour tester ce projet il est possible d'utiliser Postman, un outil très pratique qui sert 
-notamment à tester les différentes requêtes.<br>
-Vous trouverez ici la [documentation Postman de l'API](https://www.postman.com/supply-observer-79467793/workspace/express-spotlight/).
-
-Maxime Etcheverria & Julien Ousmer
+Maxime Etcheverria, Julien Ousmer, Titouan Foras & Clément Pagès
