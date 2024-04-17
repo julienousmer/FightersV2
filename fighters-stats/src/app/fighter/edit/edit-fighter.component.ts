@@ -51,7 +51,7 @@ export class EditFighterComponent implements OnInit{
       }
     } else {
       // @ts-ignore
-      this.fighterForm.patchValue(this.model!);
+      this.fighterForm. patchValue(this.model!);
     }
 
   }
