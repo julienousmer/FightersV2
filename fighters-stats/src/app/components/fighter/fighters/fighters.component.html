@@ -1,0 +1,67 @@
+<div *ngIf="!isEditing; else editTemplate" class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <h2>Fighters list</h2>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <a class="btn btn-success" (click)="addFighterFormLine()">Add</a>
+          </div>
+          <div class="col-md-2">
+            <a class="btn btn-success" (click)="saveAllFighter()">Save all</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-content">
+        <div *ngIf="fightersList">
+          <table class="table table-striped" *ngIf="isLoaded">
+            <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Weight (kg)</th>
+              <th scope="col">Height (cm)</th>
+              <th scope="col">Wins/Loses</th>
+              <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody [formGroup]="fightersForm">
+            <ng-container formArrayName="fighters">
+              <tr *ngFor="let fighter of myFighterForm().controls; let i = index" [formGroupName]="i">
+                <td><input type="text" formControlName="firstname"> <input type="text" formControlName="lastname"></td>
+                <td><input type="number" formControlName="weight"></td>
+                <td><input type="number" formControlName="height"></td>
+                <td><input type="number" formControlName="nbWin"><input type="number" formControlName="nbLose"></td>
+                <td>
+                  <a class="btn btn-warning" (click)="editFighter(fighter.value)">Details</a>
+                </td>
+              </tr>
+            </ng-container>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="!fightersList">
+          <p>Chargement ...</p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <h4>Fighters stats</h4>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+<ng-template #editTemplate>
+  <app-fighter-edit [fighter]="editingFighter" (fighterUpdated)="onFighterUpdated($event)"></app-fighter-edit>
+</ng-template>

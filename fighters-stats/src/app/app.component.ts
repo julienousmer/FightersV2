@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AppUpdateService} from "./services/sw-update.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fighters-stats';
+
+  constructor(private updates: AppUpdateService) {
+  }
 }
