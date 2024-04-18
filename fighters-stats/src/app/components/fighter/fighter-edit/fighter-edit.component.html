@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-8">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
     <div class="card">
       <form [formGroup]="fighterForm">
         <div class="card-header">
@@ -16,6 +16,55 @@
           </div>
         </div>
         <div class="card-content">
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <div *ngIf="fighterForm.get('firstname')?.errors" class="alert alert-danger">
+                <div *ngIf="fighterForm.get('firstname')?.errors?.['required']">Prénom est requis.</div>
+                <div *ngIf="fighterForm.get('firstname')?.errors?.['minlength']">Prénom doit être au moins de 3 caractères.</div>
+                <div *ngIf="fighterForm.get('firstname')?.errors?.['maxlength']">Prénom ne peut pas dépasser 25 caractères.</div>
+              </div>
+              <div *ngIf="fighterForm.get('lastname')?.errors" class="alert alert-danger">
+                <div *ngIf="fighterForm.get('lastname')?.errors?.['required']">Nom est requis.</div>
+                <div *ngIf="fighterForm.get('lastname')?.errors?.['minlength']">Nom doit être au moins de 3 caractères.</div>
+                <div *ngIf="fighterForm.get('lastname')?.errors?.['maxlength']">Nom ne peut pas dépasser 50 caractères.</div>
+              </div>
+              <div *ngIf="fighterForm.get('age')?.errors" class="alert alert-danger">
+                <div *ngIf="fighterForm.get('age')?.errors?.['required']">L'âge est requis.</div>
+                <div *ngIf="fighterForm.get('age')?.errors?.['min']">L'âge doit être supérieur à 16 ans.</div>
+                <div *ngIf="fighterForm.get('age')?.errors?.['max']">L'âge doit être inférieur à 55 ans.</div>
+              </div>
+              <div *ngIf="fighterForm.get('weight')?.errors" class="alert alert-danger">
+                <div *ngIf="fighterForm.get('weight')?.errors?.['required']">Le poids est requis.</div>
+                <div *ngIf="fighterForm.get('weight')?.errors?.['min']">Le poids doit être supérieur à 45 kg.</div>
+                <div *ngIf="fighterForm.get('weight')?.errors?.['max']">Le poids doit être inférieur à 160 kg.</div>
+              </div>
+              <div *ngIf="fighterForm.get('height')?.errors" class="alert alert-danger">
+                <div *ngIf="fighterForm.get('height')?.errors?.['required']">La taille est requise.</div>
+                <div *ngIf="fighterForm.get('height')?.errors?.['min']">La taille doit être supérieur à 45 cm.</div>
+                <div *ngIf="fighterForm.get('height')?.errors?.['max']">La taille doit être inférieur à 250 cm.</div>
+              </div>
+              <div *ngIf="fighterForm.get('reach')?.errors" class="alert alert-danger">
+                <div *ngIf="fighterForm.get('reach')?.errors?.['required']">L'allonge est requise.</div>
+                <div *ngIf="fighterForm.get('reach')?.errors?.['min']">L'allonge doit être supérieur à 25 cm.</div>
+                <div *ngIf="fighterForm.get('reach')?.errors?.['max']">L'allonge doit être inférieur à 150 cm.</div>
+              </div>
+              <div *ngIf="fighterForm.get('nbWin')?.errors" class="alert alert-danger">
+                <div *ngIf="fighterForm.get('nbWin')?.errors?.['required']">Le nombre de victoire est requise.</div>
+                <div *ngIf="fighterForm.get('nbWin')?.errors?.['min']">Le nombre de victoire doit être supérieur à 0</div>
+                <div *ngIf="fighterForm.get('nbWin')?.errors?.['max']">Le nombre de victoire doit être inférieur à 100</div>
+              </div>
+              <div *ngIf="fighterForm.get('nbLose')?.errors" class="alert alert-danger">
+                <div *ngIf="fighterForm.get('nbLose')?.errors?.['required']">Le nombre de défaite est requise.</div>
+                <div *ngIf="fighterForm.get('nbLose')?.errors?.['min']">Le nombre de défaite doit être supérieur à 0</div>
+                <div *ngIf="fighterForm.get('nbLose')?.errors?.['max']">Le nombre de défaite doit être inférieur à 100</div>
+              </div>
+              <div *ngIf="fighterForm.get('sexe')?.errors" class="alert alert-danger">
+                <div *ngIf="fighterForm.get('sexe')?.errors?.['required']">Le sexe est requis.</div>
+              </div>
+            </div>
+            <div class="col-md-2"></div>
+          </div>
           <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-3">
@@ -105,5 +154,5 @@
       </form>
     </div>
   </div>
-  <div class="col-md-2"></div>
+  <div class="col-md-1"></div>
 </div>
