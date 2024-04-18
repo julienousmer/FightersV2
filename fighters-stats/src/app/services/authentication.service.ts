@@ -1,29 +1,21 @@
-import {Injectable} from "@angular/core";
+import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environment/environment";
+import {environment} from "../../config/environment/environment";
 
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthenticationService {
 
-@Injectable()
-export class AuthService {
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   login(username: string, password: string) {
-    return this.http.post<{ access_token: string }>(environment.backendUrl + '/auth',
-      {
-        username,
-        password
-      })
+    return this.http.post<{ access_token: string }>(environment.backendUrl + '/auth', {username, password})
   }
 
   setSession(authToken: string) {
     localStorage.setItem('expires_at', (Date.now() + 60 * 60 * 1000).toString());
     localStorage.setItem('id_token', authToken);
-  }
-
-  logout() {
-    localStorage.removeItem("id_token");
-    localStorage.removeItem("expires_at");
   }
 
   public isLoggedIn() {

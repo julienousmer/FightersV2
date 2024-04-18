@@ -4,16 +4,15 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {UserModule} from "./user/user.module";
-import {FighterModule} from "./fighter/fighter.module";
-import {AuthModule} from "./auth/auth.module";
-import {AuthInterceptor} from "../auth.interceptor";
+import {FighterModule} from "./components/fighter/fighter.module";
+import {AuthModule} from "./components/auth/auth.module";
+import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
-import {AuthRoutingModule} from "./auth/auth-routing.module";
-import {FighterRoutingModule} from "./fighter/fighter-routing.module";
+import {AuthRoutingModule} from "./components/auth/auth-routing.module";
+import {FighterRoutingModule} from "./components/fighter/fighter-routing.module";
 import { ServiceWorkerModule } from '@angular/service-worker';
-import {AppUpdateService} from "../sw-update.service";
-import {OnlineStatusService} from "../online-status.service";
+import {AppUpdateService} from "./services/sw-update.service";
+import {OnlineStatusService} from "./services/online-status.service";
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import {OnlineStatusService} from "../online-status.service";
   ],
   imports: [
     BrowserModule,
-    UserModule,
     AuthModule,
     FighterModule,
     AuthRoutingModule,

@@ -1,4 +1,4 @@
-<div class="row">
+<div *ngIf="!isEditing; else editTemplate" class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">
     <div class="card">
@@ -37,9 +37,7 @@
                 <td><input type="number" formControlName="height"></td>
                 <td><input type="number" formControlName="nbWin"><input type="number" formControlName="nbLose"></td>
                 <td>
-                  <a class="btn btn-warning"
-                     [routerLink]="['/fighter/detail/', myFighterForm().controls[i].get('id')?.value]"
-                     routerLinkActive="activeLinkClass">Details</a>
+                  <a class="btn btn-warning" (click)="editFighter(fighter.value)">Details</a>
                 </td>
               </tr>
             </ng-container>
@@ -63,3 +61,7 @@
   </div>
   <div class="col-md-2"></div>
 </div>
+
+<ng-template #editTemplate>
+  <app-fighter-edit [fighter]="editingFighter" (fighterUpdated)="onFighterUpdated($event)"></app-fighter-edit>
+</ng-template>
