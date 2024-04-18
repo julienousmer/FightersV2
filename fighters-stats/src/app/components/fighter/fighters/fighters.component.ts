@@ -59,7 +59,6 @@ export class FightersComponent implements OnInit, OnDestroy {
   monitorConnectionStatus() {
     this.onlineStatusSubscribe = this.onlineStatusService.connectionChanged.subscribe({
       next: isOnline => {
-        console.log("monitorConnectionStatus");
         this.isOnline = isOnline;
         if (isOnline) {
           this.sendItemsFromIndexedDb().then(() => console.log('Connected, data send to database'));
@@ -253,7 +252,15 @@ export class FightersComponent implements OnInit, OnDestroy {
   }
 
   onFighterUpdated(fighter: IFighter) {
+    const indexFighter = this.fightersList.findIndex(f => f.id == fighter.id);
+    if (indexFighter !== -1) {
+      this.fightersList[indexFighter] = fighter;
+    } else {
+      this.fightersList.push(fighter);
+    }
+    this.fightersForm = this.fb.group({fighters: this.fb.array([])});
+    this.fightersList.forEach(fighter => this.addFighterForm(fighter));
+    this.saveAllFighter();
     this.isEditing = false;
-    this.loadFighters();
   }
 }
