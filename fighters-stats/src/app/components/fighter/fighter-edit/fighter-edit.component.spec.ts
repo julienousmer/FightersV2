@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DetailFighterComponent } from './detail-fighter.component';
+import { FighterEditComponent } from './fighter-edit.component';
 
-describe('DetailFighterComponent', () => {
-  let component: DetailFighterComponent;
-  let fixture: ComponentFixture<DetailFighterComponent>;
+describe('FighterEditComponent', () => {
+  let component: FighterEditComponent;
+  let fixture: ComponentFixture<FighterEditComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DetailFighterComponent ]
+      declarations: [ FighterEditComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DetailFighterComponent);
+    fixture = TestBed.createComponent(FighterEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

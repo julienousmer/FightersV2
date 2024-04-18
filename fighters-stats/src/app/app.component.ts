@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AppUpdateService} from "../sw-update.service";
+import {AppUpdateService} from "./services/sw-update.service";
 
 @Component({
   selector: 'app-root',

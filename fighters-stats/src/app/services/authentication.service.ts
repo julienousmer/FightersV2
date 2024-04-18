@@ -1,11 +1,13 @@
-import {Injectable} from "@angular/core";
+import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environment/environment";
+import {environment} from "../../config/environment/environment";
 
-@Injectable()
-export class AuthService {
-  constructor(private http: HttpClient) {
-  }
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthenticationService {
+
+  constructor(private http: HttpClient) { }
 
   login(username: string, password: string) {
     return this.http.post<{ access_token: string }>(environment.backendUrl + '/auth', {username, password})

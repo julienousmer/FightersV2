@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {DetailFighterComponent} from "./detail-fighter/detail-fighter.component";
 import {FightersComponent} from "./fighters/fighters.component";
+import {FighterEditComponent} from "./fighter-edit/fighter-edit.component";
 
 const routes: Routes = [
   {
     path: 'fighter',
     children: [
-      {path: 'detail/:id', component: DetailFighterComponent, pathMatch: 'full'},
+      {path: 'detail/:id', component: FighterEditComponent, pathMatch: 'full'},
       {path: 'list', component: FightersComponent, pathMatch: 'full'},
       {redirectTo: 'list', path: '', pathMatch: 'full'}
     ]

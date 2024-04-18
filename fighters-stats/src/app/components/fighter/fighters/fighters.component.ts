@@ -1,10 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {IFighter} from "@models/shared";
 import {HttpClient} from "@angular/common/http";
-import {OnlineStatusService} from "../../../online-status.service";
+import {OnlineStatusService} from "../../../services/online-status.service";
 import {Subscription} from "rxjs";
-import {db} from "../../../indexed.db";
+import {db} from "../../../../config/indexed.db";
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FighterService} from "../../../services/fighter.service";
 
 @Component({
   selector: 'app-fighters',
@@ -14,63 +15,65 @@ import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class FightersComponent implements OnInit, OnDestroy {
 
   fightersForm: FormGroup = this.fb.group({fighters: this.fb.array([])});
-  fightersList: Array<IFighter> | undefined;
+  fightersList!: Array<IFighter>;
   fighterSubscribe!: Subscription;
+  onlineStatusSubscribe!: Subscription;
   isOnline: boolean = true;
   isLoaded: boolean = false;
+  isEditing: boolean = false;
+  editingFighter!: IFighter;
 
   constructor(
     private http: HttpClient,
     private onlineStatusService: OnlineStatusService,
     private fb: FormBuilder,
+    private fighterService: FighterService,
   ) {
   }
 
   ngOnInit() {
-    if (!this.fighterSubscribe) {
-      this.fighterSubscribe = this.onlineStatusService.connectionChanged.subscribe(isOnline => {
-        if (isOnline) {
-          this.sendItemsFromIndexedDb().then(r => {
-            console.log('online');
-            this.isOnline = true;
-          });
-        } else {
-          console.log('offline');
-          this.isOnline = false;
-        }
-      })
-    }
-
-    this.http.get<Array<IFighter>>('http://localhost:3000/fighters').subscribe(data => {
-      for (const fighter of data) {
-        this.addFighterForm(fighter).then(r => null);
-        this.isLoaded = true;
-      }
-      this.fightersList = data;
-    });
+    this.loadFighters();
+    this.monitorConnectionStatus();
   }
 
   ngOnDestroy() {
     if (this.fighterSubscribe) {
       this.fighterSubscribe.unsubscribe();
     }
+    if (this.onlineStatusSubscribe) {
+      this.onlineStatusSubscribe.unsubscribe();
+    }
   }
 
-  async listAllFighters(): Promise<Array<IFighter>> {
-    return db.fighters
-      .where({})
-      .toArray();
+  loadFighters() {
+    this.fighterSubscribe = this.fighterService.getFighters().subscribe({
+      next: fighters => {
+        this.fightersList = fighters;
+        this.fightersList.forEach(fighter => this.addFighterForm(fighter));
+        this.isLoaded = true
+      },
+      error: err => console.error(err)
+    });
   }
 
-  async addFighterToIndexedDb(fighter: IFighter) {
-    await db.fighters.add({...fighter});
+  monitorConnectionStatus() {
+    this.onlineStatusSubscribe = this.onlineStatusService.connectionChanged.subscribe({
+      next: isOnline => {
+        console.log("monitorConnectionStatus");
+        this.isOnline = isOnline;
+        if (isOnline) {
+          this.sendItemsFromIndexedDb().then(() => console.log('Connected, data send to database'));
+        }
+      },
+      error: err => console.error(err)
+    });
   }
 
   private async sendItemsFromIndexedDb() {
     const allFighters: IFighter[] = await db.fighters.toArray();
 
     allFighters.forEach((item: IFighter) => {
-      this.http.post("http://localhost:3000/fighters", JSON.stringify(item)).subscribe(() => {
+      this.http.post("http://localhost:3000/fighters", item).subscribe(() => {
         db.fighters.delete(item.id).then(() => {
           console.log(`Item ${item.id} sent and deleted locally`);
         })
@@ -162,10 +165,6 @@ export class FightersComponent implements OnInit, OnDestroy {
     }
   }
 
-  deleteFighterForm(fighterIndex: number) {
-    this.myFighterForm().removeAt(fighterIndex);
-  }
-
   addFighterFormLine() {
     const newFighter = this.fb.group(
       {
@@ -246,5 +245,15 @@ export class FightersComponent implements OnInit, OnDestroy {
         });
       }
     });
+  }
+
+  editFighter(fighter: IFighter) {
+    this.editingFighter = fighter;
+    this.isEditing = true;
+  }
+
+  onFighterUpdated(fighter: IFighter) {
+    this.isEditing = false;
+    this.loadFighters();
   }
 }
