@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {IFighter} from "@models/shared";
 import {HttpClient} from "@angular/common/http";
 import {OnlineStatusService} from "../../../services/online-status.service";
@@ -72,10 +72,12 @@ export class FightersComponent implements OnInit, OnDestroy {
     const allFighters: IFighter[] = await db.fighters.toArray();
 
     allFighters.forEach((item: IFighter) => {
-      this.http.post("http://localhost:3000/fighters", item).subscribe(() => {
-        db.fighters.delete(item.id).then(() => {
-          console.log(`Item ${item.id} sent and deleted locally`);
-        })
+      this.fighterService.createFighter(item).subscribe({
+        next: () => {
+          db.fighters.delete(item.id);
+          console.log(`Item ${item.id} sent and deleted locally`)
+        },
+        error: err => console.error(err)
       });
     })
   }
@@ -164,7 +166,7 @@ export class FightersComponent implements OnInit, OnDestroy {
     }
   }
 
-  addFighterFormLine() {
+  addNewFighterForm() {
     const newFighter = this.fb.group(
       {
         id: null,
@@ -233,12 +235,12 @@ export class FightersComponent implements OnInit, OnDestroy {
     formFighters.forEach(formFighter => {
       const formFighterData = formFighter.value;
       if (formFighterData.id) {
-        this.http.patch(`http://localhost:3000/fighters/${formFighterData.id}`, formFighterData).subscribe({
+        this.fighterService.updateFighter(formFighterData.id, formFighterData).subscribe({
           next: (response) => console.log('Fighter updated', response),
           error: (error) => console.error('Error updating fighter', error)
       });
       } else {
-        this.http.post('http://localhost:3000/fighters', formFighterData).subscribe({
+        this.fighterService.createFighter(formFighterData).subscribe({
             next: (response) => console.log('Fighter added', response),
             error: (error) => console.error('Error adding fighter', error)
         });
@@ -262,5 +264,16 @@ export class FightersComponent implements OnInit, OnDestroy {
     this.fightersList.forEach(fighter => this.addFighterForm(fighter));
     this.saveAllFighter();
     this.isEditing = false;
+  }
+
+  deleteFighter(fighter: IFighter) {
+    this.fighterService.deleteFighter(fighter.id.toString()).subscribe({
+      next: () => {
+        this.isLoaded = false;
+        this.fightersForm = this.fb.group({fighters: this.fb.array([])});
+        this.loadFighters();
+      },
+      error: err => console.error(err)
+    });
   }
 }

@@ -10,7 +10,7 @@
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-2">
-            <a class="btn btn-success" (click)="addFighterFormLine()">Add</a>
+            <a class="btn btn-success" (click)="addNewFighterForm()">Add</a>
           </div>
           <div class="col-md-2">
             <a class="btn btn-success" (click)="saveAllFighter()">Save all</a>
@@ -38,6 +38,7 @@
                 <td><input type="number" formControlName="nbWin"><input type="number" formControlName="nbLose"></td>
                 <td>
                   <a class="btn btn-warning" (click)="editFighter(fighter.value)">Details</a>
+                  <a class="btn btn-danger" (click)="deleteFighter(fighter.value)">Supprimer</a>
                 </td>
               </tr>
             </ng-container>
