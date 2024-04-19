@@ -3,6 +3,7 @@ import {IFighter} from "@models/shared";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../../services/authentication.service";
+import {forbiddenNameValidator} from "../../../directives/forbidden-name.directive";
 
 @Component({
   selector: 'app-fighter-edit',
@@ -27,6 +28,7 @@ export class FighterEditComponent implements OnInit{
           Validators.required,
           Validators.minLength(3),
           Validators.maxLength(25),
+          forbiddenNameValidator(/enculé/i)
         ]
       ],
       lastname: [
@@ -106,8 +108,16 @@ export class FighterEditComponent implements OnInit{
     if (this.fighterForm.valid) {
       const updateFighter = {...this.fighter, ...this.fighterForm.value};
       this.fighterUpdated.emit(updateFighter);
-      this.router.navigate(["/fighter/list"]).then(() => {});
+      this.navigateToFightersList();
     }
   }
 
+  back(): void {
+    this.fighterUpdated.emit(this.fighter);
+    this.navigateToFightersList();
+  }
+
+  private navigateToFightersList(): void {
+    this.router.navigate(["/fighter/list"]).then(() => {});
+  }
 }
