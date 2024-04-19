@@ -5,8 +5,8 @@ plusieurs sections expliquées ci-dessous.
 
 ## Outils et technos utilisées
 
-- Node.js : Environnement de développement JavaScript côté serveur
-- WebStorm : Excellente prise en charge de Node.js et Angular
+- NestJS : Environnement de développement JavaScript côté serveur
+- WebStorm : Excellente prise en charge du typescript et Angular
 - GitKraken : Client Git qui facilite le versioning
 - Angular : Framework TypeScript facile à initialiser
 
@@ -29,17 +29,19 @@ git clone https://github.com/julienousmer/FightersV2.git
 npm install
 ```
 
+```bash
+npm run install-project-dependencies
+```
+
 ## Lancer l'application
 
 ```bash
-cd backend
-npm start server
+npm run start-backend
 ```
 
 Puis dans un autre terminal
 ```bash
-cd fighters-stats
-ng serve
+npm run start-frontend
 ```
 
 Maxime Etcheverria, Julien Ousmer, Titouan Foras & Clément Pagès
