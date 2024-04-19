@@ -23,6 +23,7 @@
                 <div *ngIf="fighterForm.get('firstname')?.errors?.['required']">Prénom est requis.</div>
                 <div *ngIf="fighterForm.get('firstname')?.errors?.['minlength']">Prénom doit être au moins de 3 caractères.</div>
                 <div *ngIf="fighterForm.get('firstname')?.errors?.['maxlength']">Prénom ne peut pas dépasser 25 caractères.</div>
+                <div *ngIf="fighterForm.get('firstname')?.errors?.['forbiddenName']">Prénom ne peut pas être "enculé".</div>
               </div>
               <div *ngIf="fighterForm.get('lastname')?.errors" class="alert alert-danger">
                 <div *ngIf="fighterForm.get('lastname')?.errors?.['required']">Nom est requis.</div>
@@ -69,7 +70,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-3">
               <label for="firstname">
-                Nom
+                Firstname
               </label>
               <input class="form-control" id="firstname" type="text"
                      formControlName="firstname">
@@ -77,7 +78,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-3">
               <label for="lastname">
-                Prénom
+                Lastname
               </label>
               <input class="form-control" id="lastname" type="text" formControlName="lastname">
             </div>
@@ -128,14 +129,14 @@
             <div class="col-md-2"></div>
             <div class="col-md-3">
               <label for="nbWin">
-                number Wins
+                Wins number
               </label>
               <input class="form-control" id="nbWin" type="text" formControlName="nbWin">
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-3">
               <label for="nbLose">
-                number Looses
+                Looses number
               </label>
               <input class="form-control" id="nbLose" type="text" formControlName="nbLose">
             </div>
@@ -146,7 +147,7 @@
           <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-2">
-              <a class="btn btn-dark" (click)="save()">Back</a>
+              <a class="btn btn-dark" (click)="back()">Back</a>
             </div>
             <div class="col-md-5"></div>
           </div>

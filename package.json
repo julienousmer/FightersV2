@@ -1,0 +1,26 @@
+{
+  "name": "fighters-stats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "install-project-dependencies": "npm-run-all install-backend-dependencies install-frontend-dependencies",
+    "install-backend-dependencies": "npm install --prefix backend",
+    "install-frontend-dependencies": "npm install --prefix fighters-stats",
+    "start-backend": "npm run --prefix backend start",
+    "start-frontend": "npm run --prefix fighters-stats start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julienousmer/FightersV2.git"
+  },
+  "author": "Borloo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julienousmer/FightersV2/issues"
+  },
+  "homepage": "https://github.com/julienousmer/FightersV2#readme",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
