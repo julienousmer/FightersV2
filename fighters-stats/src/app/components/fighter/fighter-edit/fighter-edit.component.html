@@ -23,7 +23,7 @@
                 <div *ngIf="fighterForm.get('firstname')?.errors?.['required']">Prénom est requis.</div>
                 <div *ngIf="fighterForm.get('firstname')?.errors?.['minlength']">Prénom doit être au moins de 3 caractères.</div>
                 <div *ngIf="fighterForm.get('firstname')?.errors?.['maxlength']">Prénom ne peut pas dépasser 25 caractères.</div>
-                <div *ngIf="fighterForm.get('firstname')?.errors?.['forbiddenName']">Prénom ne peut pas être "enculé"</div>
+                <div *ngIf="fighterForm.get('firstname')?.errors?.['forbiddenName']">Prénom ne peut pas être "enculé".</div>
               </div>
               <div *ngIf="fighterForm.get('lastname')?.errors" class="alert alert-danger">
                 <div *ngIf="fighterForm.get('lastname')?.errors?.['required']">Nom est requis.</div>
